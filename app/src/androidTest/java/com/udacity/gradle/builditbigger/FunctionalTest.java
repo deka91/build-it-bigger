@@ -1,9 +1,12 @@
 package com.udacity.gradle.builditbigger;
 
+import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.concurrent.TimeUnit;
 
 import static junit.framework.Assert.assertNotNull;
 
@@ -14,21 +17,21 @@ import static junit.framework.Assert.assertNotNull;
 public class FunctionalTest
 {
 
+  @Test
   public void retrievesNonEmptyString()
   {
-    String result = null;
-    EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask();
-    endpointsAsyncTask.execute();
+    String joke = null;
 
     try
     {
-      result = endpointsAsyncTask.get();
-      Log.d("TEST", "Retrieved a non-empty string successfully: " + result);
+      EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask();
+      endpointsAsyncTask.execute(InstrumentationRegistry.getTargetContext());
+      joke = endpointsAsyncTask.get(30, TimeUnit.SECONDS);
     } catch(Exception e)
     {
       e.printStackTrace();
     }
 
-    assertNotNull(result);
+    assertNotNull(joke);
   }
 }
