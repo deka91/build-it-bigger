@@ -4,9 +4,24 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:gravity="center"
+  android:orientation="vertical"
   tools:context="test.android.com.jokepresenter.JokePresenterActivity">
 
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/title"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
   <TextView android:id="@+id/tv_result" android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:background="@drawable/border"
+            android:padding="8dp"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            tools:text="This is a joke!"/>
 
 </LinearLayout>
